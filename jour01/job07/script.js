@@ -1,39 +1,46 @@
-var a = prompt("Premier Nombre");
-var b = prompt("Second Nombre");
-
-function sommenombrespremiers(a,b)
+function jourtravaille(date)
 {
-    var number=0;
-    var number2=0;
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     
+    var jourferies = [
+      '2020-01-01',
+      '2020-04-13',
+      '2020-05-01',
+      '2020-05-08',
+      '2020-05-21',
+      '2020-06-01',
+      '2020-07-14',
+      '2020-08-15',
+      '2020-11-01',
+      '2020-11-11',
+      '2020-12-25']
     
-    for(i=0; i < a; i++)
+    var e = date;
+    e = e.toISOString().split('T')[0];
+    var d = date.toLocaleDateString('fr-FR', options);
+    jour = d.split(" ")[0];
+    if(jourferies.includes(e))
     {
-        if(a % i== 0)
-        {
-            number++;
-        }
-    }
-    
-    for(i=0; i < b; i++)
-    {
-        if(b % i== 0)
-        {
-            number2++;
-        }
-    }
-    
-    if(number > 2 || number2 > 2)
-    {
-        console.log(false);
-        document.write(false);
+        console.log(d + " est un jour ferié");
     }
     else
-    {	
-        console.log(parseInt(a) + parseInt(b));
-        document.write(parseInt(a) + parseInt(b));
+    {
+        console.log(d + " n'est pas un jour ferié");
+    }
+
+    
+    if(jour == "samedi" | jour == "dimanche")
+    {
+        console.log("Non, " + d + " est un week-end")
+    }
+    else
+    {
+        console.log("Oui, " + d + " est un jour travaillé");
     }
     
+    
+    
 }
-
-sommenombrespremiers(a,b)
+saisie = prompt("Date : yyyy-mm-dd");
+var date = new Date(saisie);
+jourtravaille(date);
